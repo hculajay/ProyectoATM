@@ -15,11 +15,11 @@ public class Autenticar {
     public boolean autenticar(Cuentahabiente cuenta1,int noCuenta, int nip){
         
         if (cuenta1.getNoCuenta() == noCuenta && cuenta1.getNip() == nip) {
-            System.out.println("Credenciales validas ;)");
+            System.out.println("\nCredenciales validas ;)");
             resultado = true;
         } else {
-            System.out.println("Credenciales invalidas :(");
-            System.out.println("Intente nuevamente");
+            System.out.println("\nCredenciales invalidas :(");
+            System.out.println("Intente nuevamente\n");
             resultado = false;
         }
         return resultado;
