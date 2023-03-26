@@ -11,37 +11,13 @@ package proyectoatm;
 public class Cuenta {
     //declaracion de variables o instancias
     private float saldo;
-    float pivote;
-    
     private float saldoFlotante;
     private int numeroDeCuenta;
     private int nip;
     
-    
-    
-    //Constructor
-    /*
-    public Cuenta(String nombre){
-        System.out.println("Hola!" + nombre);
-    }
-    */
-    //public Cuenta(){
-       //saldo = 15000; 
-    //}
-    //Constructores
-    public Cuenta() {
-        //saldo = 65f;
-    }
-    /*
-    public Cuenta(float saldo, float saldoFlotante, int numeroDeCuenta, int nip) {
+
+    public Cuenta(float saldo) {
         this.saldo = saldo;
-        this.saldoFlotante = saldoFlotante;
-        this.numeroDeCuenta = numeroDeCuenta;
-        this.nip = nip;
-    }
-    */
-    public Cuenta(float saldoInicial) {
-        this.saldo = saldoInicial;
     }   
     //Getters and Setters        
     public float getSaldo(){
@@ -76,36 +52,16 @@ public class Cuenta {
         this.nip = nip;
     }
 
-    /*
-    //creando metodos
-    public int obtenerSaldo(int numeroDeCuenta){
-    System.out.println("Cuenta.obtenerSaldo(int)");
-    return 0;
-    }
-    public int obtenerSaldo(String s1, int i1){
-    System.out.println("Cuenta.obtenerSaldo(String, int)");
-    return 0;
-    }
-    public int obtenerSaldo(int i1, String s1){
-    System.out.println("Cuenta.obtenerSaldo(int, String)");
-    return 0;
-    }
-     */
-    public void acreditar(int monto) {
+    public void acreditar(float monto) {
+        //System.out.println("saldo = "+saldo);
+        //System.out.println("monto = " + monto);
+        saldoFlotante += monto;
+    }  
    
-    }
-            
     public void debitar(float monto){
-        this.setSaldo(monto);
-        System.out.println("monto:"+monto);
-        System.out.println("saldo: "+this.getSaldo());
-        this.saldo = monto;
-        /*System.out.println("monto: "+monto);
-        System.out.println("getSaldo: "+this.getSaldo());
-        float d1  = ((this.getSaldo()) - monto);
-        this.setSaldo(d1);
-        System.out.println("setSaldo:" + d1);
-        System.out.println("cuenta debitar(), saldo: "+ this.getSaldo());*/
+        //System.out.println("saldo = "+saldo);
+        //System.out.println("monto = " + monto);
+        saldo -= monto;
     }       
     
     /*

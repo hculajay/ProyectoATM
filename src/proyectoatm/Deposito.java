@@ -11,12 +11,18 @@ package proyectoatm;
 public class Deposito extends Transaccion{
     //int monto;
     
-    public void ejecutar(int monto){
-        
-        //super.ejecutar(monto);
-        
-        System.out.println("Deposito.ejecutar");
+    private float monto;
+    
+    public Deposito(Cuenta cuenta, float monto){
+        super(cuenta);
+        this.monto = monto;    
     }
     
-    
+    public void ejecutar(){
+        
+        cuenta.acreditar(monto);
+        
+        //System.out.println("traer saldo: " + cuenta.getSaldoFlotante());
+        //System.out.println("monto: "+monto);
+    }
 }

@@ -14,7 +14,7 @@ public class ATM {
     private TecladoNumerico tecladoNumericoObj;
     private Pantalla pantallObj;
     private Dispensador dispensadorObj;
-    
+    private Cuentahabiente cuentahabiente1;
     //Cuenta cuentaObj = new Cuenta();
     Cuenta cuentaObj = new Cuenta(65);
     
@@ -25,15 +25,11 @@ public class ATM {
     this.tecladoNumericoObj = new TecladoNumerico();
     this.pantallObj = new Pantalla();
     this.dispensadorObj = new Dispensador();
-    
+    this.cuentahabiente1 = new Cuentahabiente(12345, 12345);
     this.solicitarDatos();
     
     }
-    /*
-    public void inicializarCuenta(float nuevoSaldo){
-    cuentaObj.setSaldo(nuevoSaldo);
-    }
-    */
+
     private void solicitarDatos(){
         pantallObj.mostrarMensaje("Bienvenido!\n");
         pantallObj.mostrarMensaje("Ingrese su número de cuenta: ");
@@ -42,7 +38,7 @@ public class ATM {
         int nip = tecladoNumericoObj.capturarDatos();
         
         Autenticar autObj = new Autenticar();
-        autObj.autenticar(numeroCuenta, nip);
+        autObj.autenticar(cuentahabiente1,numeroCuenta, nip);
         
         if (autObj.isResultado()) {
             this.mostrarMenuPrincipal();
@@ -80,9 +76,6 @@ public class ATM {
         }
     }
     
-//    Transaccion transaccionObj1 = new Deposito();
-//    transaccionObj1.ejecutar(0);
-        
     private void mostrarMenuRetiro(){
         pantallObj.mostrarMensaje("\nMenu de retiro\n");
         pantallObj.mostrarMensaje("\t1 - $20");
@@ -93,9 +86,7 @@ public class ATM {
         pantallObj.mostrarMensaje("\t\t6 - Salir\n");
         pantallObj.mostrarMensaje("Elija un monto de retiro: ");
         int opcionRetiro = tecladoNumericoObj.capturarDatos();
-        float montoR;
-        
-        Transaccion transaccionObj1 = new Retiro();
+        float montoR = 0;
         
         float [] arr1 = new float[5];
         arr1[0] = 20f;
@@ -106,42 +97,34 @@ public class ATM {
        
         switch (opcionRetiro) {
         case 1:
-            /*
-            monto = arr1[0];
-            if (monto <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(monto);
-                int sal1 = cuentaObj.getSaldo()-monto;
+            montoR = arr1[0];
+            Transaccion retiroObj = new Retiro(cuentaObj, montoR);
+            
+            System.out.println("montoR: "+montoR);
+            System.out.println(".getSaldo: "+cuentaObj.getSaldo());
+            if (montoR <= cuentaObj.getSaldo() ){
+                retiroObj.ejecutar();
                 System.out.println("Por favor tome su efectivo\n");
-                System.out.println("Su nuevo saldo es: "+ sal1);
-                cuentaObj.setSaldo(sal1);
             } else {
                 System.out.println("\nSaldo insuficiente");
                 System.out.println("Su saldo disponible es: " + cuentaObj.getSaldo());
                 System.out.println("Por favor ingrese un monto menor\n");
                 this.mostrarMenuRetiro();
             }
-            */
+            System.out.println("Su nuevo saldo es: "+ cuentaObj.getSaldo());
             this.mostrarMenuPrincipal();
             break;
         case 2:
+            
             montoR = arr1[1];
+            Transaccion retiroObj2 = new Retiro(cuentaObj, montoR);
+            
             System.out.println("montoR: "+montoR);
             System.out.println(".getSaldo: "+cuentaObj.getSaldo());
             if (montoR <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(montoR, cuentaObj.getSaldo());
+                retiroObj2.ejecutar();
                 //int sal1 = cuentaObj.getSaldo()-monto;
                 System.out.println("Por favor tome su efectivo\n");
-                
-                //cuentaObj.setSaldo(sal1);
-            /*    
-            monto = arr1[1];
-            if (monto <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(monto);
-                int sal1 = cuentaObj.getSaldo()-monto;
-                System.out.println("Por favor tome su efectivo\n");
-                System.out.println("Su nuevo saldo es: "+ sal1);
-                cuentaObj.setSaldo(sal1);
-            */
             } else {
                 System.out.println("\nSaldo insuficiente");
                 System.out.println("Su saldo disponible es: " + cuentaObj.getSaldo());
@@ -152,57 +135,57 @@ public class ATM {
             this.mostrarMenuPrincipal();
             break;
         case 3:
-            /*
-            monto = arr1[2];
-            if (monto <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(monto);
-                int sal1 = cuentaObj.getSaldo()-monto;
+            montoR = arr1[2];
+            Transaccion retiroObj3 = new Retiro(cuentaObj, montoR);
+            
+            System.out.println("montoR: "+montoR);
+            System.out.println(".getSaldo: "+cuentaObj.getSaldo());
+            if (montoR <= cuentaObj.getSaldo() ){
+                retiroObj3.ejecutar();
                 System.out.println("Por favor tome su efectivo\n");
-                System.out.println("Su nuevo saldo es: "+ sal1);
-                cuentaObj.setSaldo(sal1);
             } else {
                 System.out.println("\nSaldo insuficiente");
                 System.out.println("Su saldo disponible es: " + cuentaObj.getSaldo());
                 System.out.println("Por favor ingrese un monto menor\n");
                 this.mostrarMenuRetiro();
-            } 
-            */
+            }
+            System.out.println("Su nuevo saldo es: "+ cuentaObj.getSaldo());
             this.mostrarMenuPrincipal();
             break;
         case 4:
-            /*
-            monto = arr1[3];
-            if (monto <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(monto);
-                int sal1 = cuentaObj.getSaldo()-monto;
+            montoR = arr1[3];
+            Transaccion retiroObj4 = new Retiro(cuentaObj, montoR);
+            
+            System.out.println("montoR: "+montoR);
+            System.out.println(".getSaldo: "+cuentaObj.getSaldo());
+            if (montoR <= cuentaObj.getSaldo() ){
+                retiroObj4.ejecutar();
                 System.out.println("Por favor tome su efectivo\n");
-                System.out.println("Su nuevo saldo es: "+ sal1);
-                cuentaObj.setSaldo(sal1);
             } else {
                 System.out.println("\nSaldo insuficiente");
                 System.out.println("Su saldo disponible es: " + cuentaObj.getSaldo());
                 System.out.println("Por favor ingrese un monto menor\n");
                 this.mostrarMenuRetiro();
             }
-            */
+            System.out.println("Su nuevo saldo es: "+ cuentaObj.getSaldo());
             this.mostrarMenuPrincipal();
             break;
         case 5:
-            /*
-            monto = arr1[4];
-            if (monto <= cuentaObj.getSaldo() ){
-                transaccionObj1.ejecutar(monto);
-                int sal1 = cuentaObj.getSaldo()-monto;
+            montoR = arr1[4];
+            Transaccion retiroObj5 = new Retiro(cuentaObj, montoR);
+            
+            System.out.println("montoR: "+montoR);
+            System.out.println(".getSaldo: "+cuentaObj.getSaldo());
+            if (montoR <= cuentaObj.getSaldo() ){
+                retiroObj5.ejecutar();
                 System.out.println("Por favor tome su efectivo\n");
-                System.out.println("Su nuevo saldo es: "+ sal1);
-                cuentaObj.setSaldo(sal1);
             } else {
                 System.out.println("\nSaldo insuficiente");
                 System.out.println("Su saldo disponible es: " + cuentaObj.getSaldo());
                 System.out.println("Por favor ingrese un monto menor\n");
                 this.mostrarMenuRetiro();
             }
-            */
+            System.out.println("Su nuevo saldo es: "+ cuentaObj.getSaldo());
             this.mostrarMenuPrincipal();
             break;
         default:

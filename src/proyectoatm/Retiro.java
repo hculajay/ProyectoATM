@@ -11,23 +11,21 @@ package proyectoatm;
 public class Retiro extends Transaccion{
     //int monto;
     
+    private float monto;
     
-    
-    public void ejecutar(float monto, float saldoInicial){
-        
-        System.out.println("monto: "+monto);
-        System.out.println("getSaldo: "+saldoInicial);
-        float d1  = ((saldoInicial) - monto);
-        //cuentaObj2.setSaldo(d1);
-        System.out.println("setSaldo:" + d1);
-        System.out.println("cuenta debitar(), saldo: "+ saldoInicial);
-        
-        
-        Cuenta cuentaObj; 
-        //new cuentaObj.setSaldo(d1);
-        /*cuentaObj2.debitar(monto);
-        System.out.println("retiro.ejecutar , saldo:" + cuentaObj2.getSaldo());*/
-        
+    public Retiro(Cuenta cuenta, float monto){
+        super(cuenta);
+        this.monto = monto;    
     }
+    
+    public void ejecutar(){
+        
+        cuenta.debitar(monto);
+        
+        //System.out.println("traer saldo: " + cuenta.getSaldo());
+        //System.out.println("monto: "+monto);
+    }
+    
+    
     
 }

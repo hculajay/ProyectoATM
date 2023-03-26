@@ -12,9 +12,9 @@ public class Autenticar {
     
     private boolean resultado;
 
-    public boolean autenticar(int noCuenta, int noNip){
+    public boolean autenticar(Cuentahabiente cuenta1,int noCuenta, int nip){
         
-        if (noCuenta == 12345 && noNip == 12345) {
+        if (cuenta1.getNoCuenta() == noCuenta && cuenta1.getNip() == nip) {
             System.out.println("Credenciales validas ;)");
             resultado = true;
         } else {

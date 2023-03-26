@@ -10,18 +10,20 @@ package proyectoatm;
  */
 public abstract class Transaccion {
     //variables
-    private float monto;
+    //private float monto;
     
     //contructores
-    public Transaccion() {
-    }
+    //public Transaccion() {
+    //}
+    
+    protected Cuenta cuenta;
 
-    public Transaccion(float monto) {
-        this.monto = monto;
+    public Transaccion(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
     
     
-
+    /*
     //getters and setters
     public float getMonto(){
         return monto;
@@ -29,10 +31,9 @@ public abstract class Transaccion {
     public void setMonto(float monto) {
         this.monto = monto;
     }
+    */
 
     //metodos
-    public void ejecutar(float monto, float saldoInicial) {
-        System.out.println("Transaccion.ejecutar");
-    }
-    
+    public abstract void ejecutar();
+
 }
